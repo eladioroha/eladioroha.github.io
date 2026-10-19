@@ -12,8 +12,8 @@ Portafolio bilingüe (español / English) con casos reales de Meta Ads, Google A
 | Club Gordos · GRDS · Fast no Junk | Franquicias gastronómicas | ~150 reuniones de venta y ~6 franquicias vendidas |
 | SkyStore | Vaporizadores | ROAS ~10x en 3 meses en una categoría restringida |
 | Herramientas Express | Ferretería online | De un Cyber sin ventas a ~$17 M en el siguiente |
-| Underfive | Snacks saludables | Remarketing con ROAS 16,4x + email marketing en Klaviyo |
-| C. del Pilar | Moda | Diagnóstico y plan para escalar una cuenta con ROAS 22,5x |
+| C. del Pilar | Moda | ROAS de 22,5x a 50x con anuncios centrados en las prendas |
+| Underfive | Snacks saludables | ROAS 9x, ticket de $34.000 y 40% más clientes nuevos |
 
 Cifras aproximadas, reconstruidas a partir de los reportes de cada cuenta.
 

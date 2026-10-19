@@ -112,9 +112,9 @@ export const casos: Caso[] = [
     marca: 'Club Gordos · GRDS · Fast no Junk',
     tipo: 'leads',
     rubro: { es: 'Franquicias gastronómicas', en: 'Restaurant franchising' },
-    periodo: { es: '[año] · 4 meses', en: '[year] · 4 months' },
+    periodo: { es: '2025 · 4 meses', en: '2025 · 4 months' },
     plataformas: 'Meta Ads · Zapier',
-    inversion: { es: '[inversión mensual]', en: '[monthly spend]' },
+    inversion: { es: '~$500 mil por marca', en: '~CLP 500K per brand' },
     titular: {
       es: '~150 reuniones de venta y ~6 franquicias vendidas con formularios de Meta',
       en: '~150 sales meetings and ~6 franchises sold through Meta lead forms',
@@ -298,34 +298,100 @@ export const casos: Caso[] = [
     ],
   },
   {
+    slug: 'c-del-pilar',
+    marca: 'C. del Pilar',
+    tipo: 'ecommerce',
+    rubro: { es: 'Moda', en: 'Fashion' },
+    periodo: { es: '2026', en: '2026' },
+    plataformas: 'Meta Ads',
+    inversion: { es: '[inversión mensual]', en: '[monthly spend]' },
+    titular: {
+      es: 'ROAS de 50x en moda: anuncios con la prenda como protagonista',
+      en: '50x ROAS in fashion: ads that put the garment front and center',
+    },
+    resumen: {
+      es: 'Una cuenta que ya era eficiente duplicó su retorno al cambiar anuncios genéricos por prendas concretas.',
+      en: 'An already efficient account doubled its return by swapping generic ads for specific garments.',
+    },
+    metrica: { valor: '50x', etiqueta: { es: 'ROAS', en: 'ROAS' } },
+    metricas: [
+      { valor: '22,5x → 50x', etiqueta: { es: 'ROAS', en: 'ROAS' } },
+      { valor: '$3.200 → $1.800', etiqueta: { es: 'costo por compra, aprox.', en: 'cost per purchase, approx. (CLP)' } },
+      { valor: '~123', etiqueta: { es: 'ventas al mes', en: 'sales per month' } },
+    ],
+    contexto: {
+      es: 'C. del Pilar es una marca de moda que vende online con Meta Ads.',
+      en: 'C. del Pilar is a fashion brand that sells online through Meta Ads.',
+    },
+    problema: {
+      es: 'La cuenta ya era eficiente (ROAS de 22,5x) pero pequeña: todo el presupuesto iba a prospección en frío, con el remarketing pausado y anuncios genéricos de marca. Las mujeres de 35 a 44 años generaban la mitad de las compras, mientras los hombres se llevaban parte del presupuesto casi sin convertir.',
+      en: 'The account was already efficient (22.5x ROAS) but small: the whole budget went to cold prospecting, remarketing was paused and the ads were generic brand creatives. Women aged 35–44 drove half of all purchases, while men took part of the budget with almost no conversions.',
+    },
+    estrategia: [
+      {
+        es: 'Cambié los anuncios genéricos por anuncios centrados en prendas concretas: la persona ve exactamente lo que puede comprar.',
+        en: 'Replaced generic ads with ads built around specific garments: people see exactly what they can buy.',
+      },
+      {
+        es: 'Concentré el presupuesto en el público que de verdad compraba, a partir del diagnóstico inicial de la cuenta.',
+        en: 'Focused the budget on the audience that was actually buying, based on the initial account diagnosis.',
+      },
+    ],
+    resultados: [
+      { es: 'El ROAS pasó de 22,5x a 50x.', en: 'ROAS went from 22.5x to 50x.' },
+      { es: 'El costo por compra bajó de ~$3.200 a ~$1.800.', en: 'Cost per purchase dropped from ~CLP 3,200 to ~CLP 1,800.' },
+      { es: 'Cerca de 123 ventas al mes.', en: 'Around 123 sales a month.' },
+    ],
+    aprendizaje: {
+      es: 'En moda, la gente compra una prenda, no una marca en abstracto. Mostrar el producto concreto acorta el camino entre el anuncio y la compra.',
+      en: 'In fashion, people buy a garment, not an abstract brand. Showing the specific product shortens the path from ad to purchase.',
+    },
+    graficos: [
+      {
+        titulo: { es: 'ROAS', en: 'ROAS' },
+        barras: [
+          { etiqueta: { es: 'Al llegar', en: 'When I joined' }, valor: 22.5, texto: '22,5x' },
+          { etiqueta: { es: 'Después', en: 'After' }, valor: 50, texto: '50x', destacada: true },
+        ],
+      },
+      {
+        titulo: { es: 'Costo por compra (menos es mejor)', en: 'Cost per purchase (lower is better, CLP)' },
+        barras: [
+          { etiqueta: { es: 'Al llegar', en: 'When I joined' }, valor: 3200, texto: '~$3.200' },
+          { etiqueta: { es: 'Después', en: 'After' }, valor: 1800, texto: '~$1.800', destacada: true },
+        ],
+      },
+    ],
+  },
+  {
     slug: 'underfive',
     marca: 'Underfive',
     tipo: 'ecommerce',
     rubro: { es: 'Snacks saludables', en: 'Healthy snacks' },
     periodo: { es: 'Sept. 2025 – 2026', en: 'Sept. 2025 – 2026' },
     plataformas: 'Meta Ads · Klaviyo',
-    inversion: { es: '[inversión mensual]', en: '[monthly spend]' },
+    inversion: { es: '~$800 mil', en: '~CLP 800K' },
     titular: {
-      es: 'Remarketing a 16x y email marketing para recuperar clientes',
-      en: '16x remarketing and email marketing to win customers back',
+      es: 'ROAS 9x, ticket de $34.000 y 40% más clientes nuevos',
+      en: '9x ROAS, a CLP 34,000 average order and 40% more new customers',
     },
     resumen: {
-      es: 'Pauta y email trabajando juntos para que el que compra una vez vuelva a comprar.',
-      en: 'Ads and email working together so one-time buyers come back.',
+      es: 'Pauta y email trabajando juntos: más clientes nuevos y compras más grandes.',
+      en: 'Ads and email working together: more new customers and bigger orders.',
     },
-    metrica: { valor: '16,4x', etiqueta: { es: 'ROAS en remarketing', en: 'remarketing ROAS' } },
+    metrica: { valor: '9x', etiqueta: { es: 'ROAS', en: 'ROAS' } },
     metricas: [
-      { valor: '16,4x', etiqueta: { es: 'ROAS del remarketing con catálogo dinámico', en: 'dynamic catalog remarketing ROAS' } },
-      { valor: '~$600', etiqueta: { es: 'costo por lead en captación', en: 'cost per lead (CLP)' } },
-      { valor: '8', etiqueta: { es: 'segmentos de clientes para email', en: 'customer segments for email' } },
+      { valor: '9x', etiqueta: { es: 'ROAS', en: 'ROAS' } },
+      { valor: '$34.000', etiqueta: { es: 'ticket promedio', en: 'average order value (CLP)' } },
+      { valor: '+40%', etiqueta: { es: 'clientes nuevos', en: 'new customers' } },
     ],
     contexto: {
-      es: 'Underfive es una marca chilena de snacks saludables con un máximo de 5 ingredientes, presente en supermercados y con tienda online propia.',
-      en: 'Underfive is a Chilean healthy snack brand made with five ingredients or fewer, sold in supermarkets and through its own online store.',
+      es: 'Underfive es una marca chilena de snacks saludables con un máximo de 5 ingredientes, presente en supermercados y con tienda online propia. Invertía cerca de $800 mil al mes en Meta Ads.',
+      en: 'Underfive is a Chilean healthy snack brand made with five ingredients or fewer, sold in supermarkets and through its own online store. It spent about CLP 800K a month on Meta Ads.',
     },
     problema: {
-      es: '[Cómo estaba la cuenta cuando llegaste en septiembre de 2025]. La recompra era la gran oportunidad: la 4ª compra duplica el valor de vida del cliente.',
-      en: '[What the account looked like when you joined in September 2025]. Repeat purchase was the big opportunity: the 4th order doubles customer lifetime value.',
+      es: 'La tienda online necesitaba sumar clientes nuevos y que cada compra fuera más grande. La recompra era la otra gran oportunidad: en Underfive, la 4ª compra duplica el valor de vida del cliente.',
+      en: 'The online store needed more new customers and bigger orders. Repeat purchase was the other big opportunity: at Underfive, the 4th order doubles customer lifetime value.',
     },
     estrategia: [
       {
@@ -333,8 +399,8 @@ export const casos: Caso[] = [
         en: 'Dynamic catalog remarketing that shows each person the products they viewed.',
       },
       {
-        es: 'Campaña de captación de leads para hacer crecer la base de email a bajo costo.',
-        en: 'A lead generation campaign to grow the email list at a low cost.',
+        es: 'Campaña de captación de leads para hacer crecer la base de email a bajo costo (~$600 por lead).',
+        en: 'A lead generation campaign to grow the email list at a low cost (~CLP 600 per lead).',
       },
       {
         es: 'Plan de email en Klaviyo con 8 segmentos de clientes según su frecuencia y su última compra, y flows para llevar a cada cliente a su siguiente compra.',
@@ -342,55 +408,13 @@ export const casos: Caso[] = [
       },
     ],
     resultados: [
-      { es: 'Remarketing con ROAS de 16,4x.', en: 'Remarketing at 16.4x ROAS.' },
-      { es: 'Leads a ~$600 cada uno.', en: 'Leads at ~CLP 600 each.' },
-      { es: '[Resultados del email marketing: ventas atribuidas, recompra, etc.]', en: '[Email marketing results: attributed revenue, repeat rate, etc.]' },
+      { es: 'ROAS de 9x en la cuenta, con el remarketing llegando a 16,4x.', en: '9x account ROAS, with remarketing reaching 16.4x.' },
+      { es: 'El ticket promedio subió hasta los $34.000.', en: 'Average order value rose to CLP 34,000.' },
+      { es: 'Los clientes nuevos aumentaron un 40%.', en: 'New customers grew by 40%.' },
     ],
     aprendizaje: {
-      es: '[Tu aprendizaje en Underfive]',
-      en: '[Your takeaway from Underfive]',
-    },
-    graficos: [],
-  },
-  {
-    slug: 'c-del-pilar',
-    marca: 'C. del Pilar',
-    tipo: 'ecommerce',
-    rubro: { es: 'Moda', en: 'Fashion' },
-    periodo: { es: '2026', en: '2026' },
-    plataformas: 'Meta Ads',
-    inversion: { es: '~$400 mil', en: '~CLP 400K' },
-    titular: {
-      es: 'Una cuenta muy eficiente, pero chica: el diagnóstico para escalar',
-      en: 'A highly efficient but small account: the diagnosis for scaling',
-    },
-    resumen: {
-      es: 'ROAS de 22,5x de partida y todo el espacio para crecer.',
-      en: 'A 22.5x starting ROAS and plenty of room to grow.',
-    },
-    metrica: { valor: '22,5x', etiqueta: { es: 'ROAS de partida', en: 'starting ROAS' } },
-    metricas: [
-      { valor: '22,5x', etiqueta: { es: 'ROAS al llegar (julio 2026)', en: 'ROAS when I joined (July 2026)' } },
-      { valor: '~$3.200', etiqueta: { es: 'costo por compra', en: 'cost per purchase (CLP)' } },
-      { valor: '3,5%', etiqueta: { es: 'CTR', en: 'CTR' } },
-    ],
-    contexto: {
-      es: 'C. del Pilar es una marca de moda que vende online con Meta Ads.',
-      en: 'C. del Pilar is a fashion brand that sells online through Meta Ads.',
-    },
-    problema: {
-      es: 'La cuenta era muy eficiente pero pequeña: invertía ~$400 mil al mes, todo en prospección en frío, con el remarketing pausado. Las mujeres de 35 a 44 años generaban la mitad de las compras, mientras los hombres se llevaban parte del presupuesto casi sin convertir.',
-      en: 'The account was very efficient but small: about CLP 400K a month, all on cold prospecting, with remarketing paused. Women aged 35–44 drove half of all purchases, while men took part of the budget with almost no conversions.',
-    },
-    estrategia: [
-      { es: '[Qué hiciste después del diagnóstico]', en: '[What you did after the diagnosis]' },
-    ],
-    resultados: [
-      { es: '[Resultados desde julio 2026]', en: '[Results since July 2026]' },
-    ],
-    aprendizaje: {
-      es: '[Tu aprendizaje en C. del Pilar]',
-      en: '[Your takeaway from C. del Pilar]',
+      es: 'La pauta trae al cliente, pero el email lo hace volver. Cuando ambos canales trabajan con la misma lógica de segmentos, crecen al mismo tiempo los clientes nuevos y el valor de cada compra.',
+      en: 'Ads bring the customer in, but email brings them back. When both channels follow the same segmentation logic, new customers and order value grow at the same time.',
     },
     graficos: [],
   },

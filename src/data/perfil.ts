@@ -29,7 +29,7 @@ export const ui = {
     contactar: 'Contactar',
     cifras: [
       { valor: '~6', etiqueta: 'franquicias vendidas con formularios de Meta' },
-      { valor: '~10x', etiqueta: 'ROAS en una marca nueva con restricciones publicitarias' },
+      { valor: '50x', etiqueta: 'ROAS en moda con anuncios centrados en las prendas' },
       { valor: '2% → 7%', etiqueta: 'tasa de cierre de una clínica, de cita a cirugía pagada' },
       { valor: '14', etiqueta: 'marcas de ecommerce y leads' },
     ],
@@ -75,7 +75,7 @@ export const ui = {
     contactar: 'Get in touch',
     cifras: [
       { valor: '~6', etiqueta: 'franchises sold through Meta lead forms' },
-      { valor: '~10x', etiqueta: 'ROAS for a new brand in a restricted ad category' },
+      { valor: '50x', etiqueta: 'ROAS in fashion with garment-focused ads' },
       { valor: '2% → 7%', etiqueta: 'clinic close rate, from booking to paid surgery' },
       { valor: '14', etiqueta: 'ecommerce and lead-gen brands' },
     ],
