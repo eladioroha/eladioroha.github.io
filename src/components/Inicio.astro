@@ -6,6 +6,7 @@ import Header from './Header.astro';
 import Contacto from './Contacto.astro';
 import Icono from './Icono.astro';
 import TarjetaCaso from './TarjetaCaso.astro';
+import Herramientas from './Herramientas.astro';
 import { perfil, ui, marcas, type Idioma } from '../data/perfil';
 import { casos, type Enfoque } from '../data/casos';
 import { ruta } from '../data/util';
@@ -129,6 +130,8 @@ const whatsapp = `https://wa.me/${perfil.whatsapp}`;
         </div>
       </div>
     </section>
+
+    <Herramientas idioma={idioma} />
 
     <!-- Proceso -->
     <section id="proceso" class="seccion bg-superficie">

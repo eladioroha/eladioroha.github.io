@@ -20,7 +20,7 @@ export const ui = {
     metaTitulo: 'Eladio Rojas Harasic · Paid Media & Growth Specialist',
     metaDescripcion:
       'Casos reales de Meta Ads y Google Ads en ecommerce y generación de leads: franquicias, clínicas, moda y retail en Chile.',
-    nav: { casos: 'Casos', proceso: 'Cómo trabajo', prisma: 'Método PRISMA', contacto: 'Contacto' },
+    nav: { casos: 'Casos', herramientas: 'Herramientas', proceso: 'Cómo trabajo', prisma: 'Método PRISMA', contacto: 'Contacto' },
     heroEtiqueta: 'Meta Ads · Google Ads · Email marketing',
     heroTitulo: 'Convierto inversión en pauta en ventas y leads que cierran.',
     heroBajada:
@@ -46,7 +46,8 @@ export const ui = {
       { titulo: 'Ejecución', texto: 'Campañas en Meta y Google, catálogos, formularios y automatizaciones para que ningún lead se enfríe.' },
       { titulo: 'Funnel completo', texto: 'Mido hasta la venta: calidad del lead, tasa de cierre, recompra. Ahí es donde se gana o se pierde la plata.' },
     ],
-    herramientasTitulo: 'Herramientas',
+    herramientasTitulo: 'Herramientas con las que trabajo',
+    herramientasBajada: 'Del anuncio a la venta: pauta, medición, tienda, CRM y automatización.',
     prismaEtiqueta: 'Herramienta propia',
     prismaTitulo: 'Método PRISMA',
     prismaTexto:
@@ -107,7 +108,7 @@ export const ui = {
     metaTitulo: 'Eladio Rojas Harasic · Paid Media & Growth Specialist',
     metaDescripcion:
       'Real Meta Ads and Google Ads case studies in ecommerce and lead generation: franchising, clinics, fashion and retail in Chile.',
-    nav: { casos: 'Case studies', proceso: 'How I work', prisma: 'PRISMA Method', contacto: 'Contact' },
+    nav: { casos: 'Case studies', herramientas: 'Tools', proceso: 'How I work', prisma: 'PRISMA Method', contacto: 'Contact' },
     heroEtiqueta: 'Meta Ads · Google Ads · Email marketing',
     heroTitulo: 'I turn ad spend into sales and leads that close.',
     heroBajada:
@@ -133,7 +134,8 @@ export const ui = {
       { titulo: 'Execution', texto: 'Meta and Google campaigns, catalogs, lead forms and automations so no lead goes cold.' },
       { titulo: 'Full funnel', texto: "I measure all the way to the sale: lead quality, close rate, repeat purchase. That's where money is made or lost." },
     ],
-    herramientasTitulo: 'Tools',
+    herramientasTitulo: 'Tools I work with',
+    herramientasBajada: 'From the ad to the sale: ads, measurement, store, CRM and automation.',
     prismaEtiqueta: 'My own tool',
     prismaTitulo: 'PRISMA Method',
     prismaTexto:
@@ -214,3 +216,55 @@ export const marcas: Record<'ecommerce' | 'leads', { nombre: string; logo?: stri
   ],
 };
 
+
+// Herramientas por categoría. "icono" es el slug de Simple Icons (simpleicons.org);
+// si la marca no está ahí, se muestra un monograma con sus iniciales.
+export const herramientas: { categoria: Texto; items: { nombre: string; icono?: string }[] }[] = [
+  {
+    categoria: { es: 'Pauta', en: 'Paid media' },
+    items: [
+      { nombre: 'Meta Ads', icono: 'meta' },
+      { nombre: 'Google Ads', icono: 'googleads' },
+      { nombre: 'TikTok Ads', icono: 'tiktok' },
+      { nombre: 'LinkedIn Ads' },
+    ],
+  },
+  {
+    categoria: { es: 'Medición', en: 'Measurement' },
+    items: [
+      { nombre: 'Google Analytics 4', icono: 'googleanalytics' },
+      { nombre: 'Google Tag Manager', icono: 'googletagmanager' },
+      { nombre: 'Meta CAPI', icono: 'meta' },
+      { nombre: 'Google Merchant Center' },
+      { nombre: 'Looker Studio', icono: 'looker' },
+    ],
+  },
+  {
+    categoria: { es: 'Ecommerce y email', en: 'Ecommerce & email' },
+    items: [
+      { nombre: 'Shopify', icono: 'shopify' },
+      { nombre: 'WooCommerce' },
+      { nombre: 'Jumpseller' },
+      { nombre: 'Klaviyo' },
+      { nombre: 'Mailchimp', icono: 'mailchimp' },
+    ],
+  },
+  {
+    categoria: { es: 'CRM y atención', en: 'CRM & messaging' },
+    items: [
+      { nombre: 'HubSpot', icono: 'hubspot' },
+      { nombre: 'Pipedrive' },
+      { nombre: 'WhatsApp Business', icono: 'whatsapp' },
+      { nombre: 'Meta Business Suite', icono: 'meta' },
+    ],
+  },
+  {
+    categoria: { es: 'Diseño, automatización e IA', en: 'Design, automation & AI' },
+    items: [
+      { nombre: 'Canva' },
+      { nombre: 'Zapier', icono: 'zapier' },
+      { nombre: 'Claude AI', icono: 'claude' },
+      { nombre: 'Claude Code', icono: 'claudecode' },
+    ],
+  },
+];
