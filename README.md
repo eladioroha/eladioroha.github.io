@@ -27,3 +27,7 @@ npm run dev      # http://localhost:4321
 npm run build
 npm run publicar # compila y sube el sitio a GitHub Pages
 ```
+
+## Créditos
+
+Diseño inspirado en [product-marketing-portfolio](https://github.com/BiaAhmed/product-marketing-portfolio) de Rabia Ahmed (Apache-2.0): hero centrado, carrusel de marcas, terminal de perfil y tarjetas de caso con desafío, enfoque, resultados y métricas de impacto. Adaptado a la paleta y a los casos de este portafolio.

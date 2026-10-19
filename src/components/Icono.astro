@@ -1,0 +1,19 @@
+---
+// Íconos de Lucide (lucide.dev/icons). Para usar uno nuevo: importarlo y agregarlo al mapa.
+import {
+  TrendingDown, Filter, ShieldAlert, Repeat, TriangleAlert, Compass, CircleCheck, Lightbulb,
+  ShoppingCart, Users, Rocket, ArrowRight, Sparkles,
+} from '@lucide/astro';
+
+const iconos = {
+  'trending-down': TrendingDown, filter: Filter, 'shield-alert': ShieldAlert, repeat: Repeat,
+  desafio: TriangleAlert, enfoque: Compass, resultados: CircleCheck, aprendizaje: Lightbulb,
+  ventas: ShoppingCart, leads: Users, lanzamiento: Rocket, retencion: Repeat, flecha: ArrowRight,
+  destello: Sparkles,
+};
+
+interface Props { nombre: string; class?: string; size?: number }
+const { nombre, class: clase, size = 20 } = Astro.props;
+const Componente = iconos[nombre as keyof typeof iconos] ?? Sparkles;
+---
+<Componente class={clase} size={size} aria-hidden="true" />

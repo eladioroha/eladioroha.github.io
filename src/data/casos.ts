@@ -16,10 +16,14 @@ export interface Grafico {
   barras: Barra[];
 }
 
+export type Enfoque = 'ventas' | 'leads' | 'lanzamiento' | 'retencion';
+
 export interface Caso {
   slug: string;
   marca: string;
   tipo: 'ecommerce' | 'leads';
+  enfoques: Enfoque[]; // para filtrar en la home
+  logos?: string[]; // archivos en public/logos
   rubro: Texto;
   periodo: Texto;
   plataformas: string;
@@ -39,6 +43,8 @@ export interface Caso {
 export const casos: Caso[] = [
   {
     slug: 'clinica-dr-carrasco',
+    enfoques: ['leads'],
+    logos: ['clinica-dr-carrasco.png'],
     marca: 'Clínica Dr. Carrasco',
     tipo: 'leads',
     rubro: { es: 'Clínica de cirugía estética', en: 'Aesthetic surgery clinic' },
@@ -109,6 +115,8 @@ export const casos: Caso[] = [
   },
   {
     slug: 'franquicias-gastronomicas',
+    enfoques: ['leads'],
+    logos: ['club-gordos.svg', 'grds.png'],
     marca: 'Club Gordos · GRDS · Fast no Junk',
     tipo: 'leads',
     rubro: { es: 'Franquicias gastronómicas', en: 'Restaurant franchising' },
@@ -178,6 +186,8 @@ export const casos: Caso[] = [
   },
   {
     slug: 'skystore',
+    enfoques: ['lanzamiento', 'ventas'],
+    logos: [],
     marca: 'SkyStore',
     tipo: 'ecommerce',
     rubro: { es: 'Vaporizadores', en: 'Vaporizers' },
@@ -236,6 +246,8 @@ export const casos: Caso[] = [
   },
   {
     slug: 'herramientas-express',
+    enfoques: ['ventas'],
+    logos: ['herramientas-express.png'],
     marca: 'Herramientas Express',
     tipo: 'ecommerce',
     rubro: { es: 'Ferretería online', en: 'Online hardware store' },
@@ -299,6 +311,8 @@ export const casos: Caso[] = [
   },
   {
     slug: 'c-del-pilar',
+    enfoques: ['ventas'],
+    logos: ['c-del-pilar.png'],
     marca: 'C. del Pilar',
     tipo: 'ecommerce',
     rubro: { es: 'Moda', en: 'Fashion' },
@@ -365,6 +379,8 @@ export const casos: Caso[] = [
   },
   {
     slug: 'underfive',
+    enfoques: ['ventas', 'retencion'],
+    logos: ['underfive.png'],
     marca: 'Underfive',
     tipo: 'ecommerce',
     rubro: { es: 'Snacks saludables', en: 'Healthy snacks' },

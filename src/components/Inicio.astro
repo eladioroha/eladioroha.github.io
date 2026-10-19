@@ -1,99 +1,132 @@
 ---
+// Diseño inspirado en "product-marketing-portfolio" de Rabia Ahmed (Apache-2.0),
+// adaptado a la paleta azul/blanco/rojo y a casos de paid media.
 import Base from '../layouts/Base.astro';
 import Header from './Header.astro';
 import Contacto from './Contacto.astro';
-import { ui, marcas, herramientas, type Idioma } from '../data/perfil';
-import { casos } from '../data/casos';
-import { cifra, ruta } from '../data/util';
+import Icono from './Icono.astro';
+import TarjetaCaso from './TarjetaCaso.astro';
+import { perfil, ui, marcas, type Idioma } from '../data/perfil';
+import { casos, type Enfoque } from '../data/casos';
+import { ruta } from '../data/util';
 
 interface Props { idioma: Idioma }
 const { idioma } = Astro.props;
 const t = ui[idioma];
 const otro = idioma === 'es' ? 'en' : 'es';
+const todasLasMarcas = [...marcas.ecommerce, ...marcas.leads];
+const enfoques = Object.keys(t.enfoques) as Enfoque[];
+const whatsapp = `https://wa.me/${perfil.whatsapp}`;
 ---
 <Base idioma={idioma} titulo={t.metaTitulo} descripcion={t.metaDescripcion} alternativa={`/${otro}/`}>
   <Header idioma={idioma} alternativa={`/${otro}/`} />
 
   <main>
     <!-- Hero -->
-    <section class="relative overflow-hidden bg-azul-oscuro text-white">
-      <div class="pointer-events-none absolute -right-32 -top-32 size-96 rounded-full bg-azul opacity-40 blur-3xl"></div>
-      <div class="contenedor relative pb-16 pt-14 md:pb-24 md:pt-24">
-        <p class="etiqueta text-white/70">{t.heroEtiqueta}</p>
-        <h1 class="mt-4 max-w-3xl text-4xl font-extrabold leading-[1.08] md:text-6xl">
-          {t.heroTitulo}
-        </h1>
-        <p class="mt-6 max-w-2xl text-lg text-white/80">{t.heroBajada}</p>
-        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-          <a href="#casos" class="btn-cta">{t.verCasos}</a>
-          <a href="#contacto" class="btn-secundario text-white">{t.contactar}</a>
+    <section class="relative overflow-hidden">
+      <div class="pointer-events-none absolute inset-x-0 top-0 h-[28rem] bg-[radial-gradient(60%_60%_at_50%_0%,#dfe8fb_0%,transparent_70%)]"></div>
+      <div class="contenedor relative pb-14 pt-14 text-center md:pb-20 md:pt-24">
+        <div class="mx-auto flex size-16 items-center justify-center rounded-2xl bg-azul-oscuro font-titulo text-xl font-extrabold text-white shadow-lg">
+          ER<span class="text-rojo">.</span>
         </div>
-
-        <dl class="mt-14 grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-white/15 md:grid-cols-4">
-          {t.cifras.map((c) => (
-            <div class="bg-azul-oscuro p-5">
-              <dt class="sr-only">{c.etiqueta}</dt>
-              <dd>
-                <span class="block whitespace-nowrap font-titulo text-2xl font-extrabold sm:text-3xl md:text-4xl">{c.valor}</span>
-                <span class="mt-2 block text-sm text-white/70">{c.etiqueta}</span>
-              </dd>
-            </div>
-          ))}
-        </dl>
+        <h1 class="mt-6 text-5xl font-extrabold text-azul-oscuro md:text-7xl">{t.saludo}</h1>
+        <p class="mx-auto mt-4 max-w-3xl font-serif text-2xl italic text-azul md:text-4xl">{t.subtitulo}</p>
+        <p class="mx-auto mt-6 max-w-2xl text-lg text-tinta-suave">{t.bajadaHero}</p>
+        <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+          <a href="#contacto" class="btn-cta">{t.conversemos}</a>
+          <a href="#casos" class="btn-oscuro">{t.verPlaybook}</a>
+        </div>
       </div>
-    </section>
 
-    <!-- Marcas -->
-    <section class="border-b border-tinta/10 bg-superficie py-12">
-      <div class="contenedor">
-        <h2 class="etiqueta text-center text-tinta-suave">{t.marcasTitulo}</h2>
-        <div class="mt-8 grid gap-8">
-          {[['ecommerce', marcas.ecommerce], ['leads', marcas.leads]].map(([clave, lista]) => (
-            <div>
-              <p class="mb-3 text-sm font-semibold text-azul">{clave === 'ecommerce' ? t.ecommerce : t.leads}</p>
-              <ul class="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4">
-                {(lista as typeof marcas.leads).map((m) => (
-                  <li class="flex h-20 items-center justify-center rounded-xl border border-tinta/10 bg-white px-4" title={m.nombre}>
-                    {m.logo ? (
-                      <img src={ruta(`/logos/${m.logo}`)} alt={m.nombre} loading="lazy" class="logo-marca max-h-11 max-w-[75%] object-contain" />
-                    ) : (
-                      <span class="text-center font-titulo text-sm font-extrabold uppercase leading-tight tracking-wide text-tinta/80">{m.nombre}</span>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+      <!-- Marcas en movimiento -->
+      <div class="relative pb-12">
+        <p class="etiqueta text-center text-tinta-suave">{t.confianTitulo}</p>
+        <div class="carrusel mt-6">
+          <ul class="carrusel-pista">
+            {[0, 1].map((copia) => todasLasMarcas.map((m) => (
+              <li class="flex h-14 w-44 shrink-0 items-center justify-center px-4" aria-hidden={copia === 1 ? 'true' : undefined}>
+                {m.logo ? (
+                  <img src={ruta(`/logos/${m.logo}`)} alt={copia === 0 ? m.nombre : ''} class="logo-marca max-h-10 max-w-full object-contain" />
+                ) : (
+                  <span class="whitespace-nowrap font-titulo text-sm font-extrabold uppercase tracking-wide text-tinta/70">{m.nombre}</span>
+                )}
+              </li>
+            )))}
+          </ul>
         </div>
       </div>
     </section>
 
-    <!-- Casos -->
+    <!-- Por qué me buscan + terminal -->
+    <section class="seccion border-t border-tinta/10 bg-superficie">
+      <div class="contenedor grid items-center gap-10 lg:grid-cols-2">
+        <div>
+          <h2 class="font-serif text-3xl font-semibold leading-tight text-azul-oscuro md:text-4xl">{t.porQueTitulo}</h2>
+          <ul class="mt-8 divide-y divide-tinta/10 border-y border-tinta/10">
+            {t.porQue.map((p) => (
+              <li class="flex gap-4 py-4">
+                <span class="mt-0.5 text-azul"><Icono nombre={p.icono} size={20} /></span>
+                <span class="text-tinta-suave">{p.texto}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="overflow-hidden rounded-2xl bg-azul-oscuro text-white shadow-2xl ring-1 ring-black/5">
+          <div class="flex items-center gap-2 border-b border-white/10 px-4 py-3">
+            <span class="size-3 rounded-full bg-rojo"></span>
+            <span class="size-3 rounded-full bg-amber-400"></span>
+            <span class="size-3 rounded-full bg-emerald-400"></span>
+            <span class="ml-3 font-mono text-xs text-white/50">eladio@growth: ~</span>
+          </div>
+          <div class="terminal p-5 font-mono text-[0.8125rem] leading-relaxed sm:p-6 sm:text-sm">
+            {t.terminal.carga.map((l) => <p class="text-white/60">{l}</p>)}
+            <p class="mt-4 text-white">[ {perfil.nombre.toLowerCase()} ]</p>
+            {t.terminal.lineas.map(([k, v]) => (
+              <p><span class="text-azul-tenue">{k}:</span> <span class="text-white">{v}</span></p>
+            ))}
+            <p class="mt-5 text-white/60">{t.terminal.invitacion}</p>
+            <form class="mt-3 flex items-center gap-2 rounded-lg bg-white/5 px-3 ring-1 ring-white/15 focus-within:ring-rojo" data-terminal={whatsapp}>
+              <span class="text-rojo">&gt;</span>
+              <label class="sr-only" for={`terminal-${idioma}`}>{t.terminal.placeholder}</label>
+              <input
+                id={`terminal-${idioma}`}
+                class="min-h-11 w-full bg-transparent text-white placeholder:text-white/40 focus:outline-none"
+                placeholder={t.terminal.placeholder}
+                autocomplete="off"
+              />
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resultados por desafío -->
     <section id="casos" class="seccion">
       <div class="contenedor">
-        <h2 class="titulo-seccion">{t.casosTitulo}</h2>
-        <p class="mt-3 max-w-2xl text-lg text-tinta-suave">{t.casosBajada}</p>
-        <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {casos.map((c) => (
-            <a
-              href={ruta(`/${idioma}/casos/${c.slug}/`)}
-              class="tarjeta group flex flex-col p-6 transition hover:-translate-y-0.5 hover:border-azul/40 hover:shadow-lg"
-              data-revelar
-            >
-              <div class="flex items-center justify-between gap-2">
-                <span class="etiqueta text-azul">{c.tipo === 'ecommerce' ? t.ecommerce : t.leads}</span>
-              </div>
-              <p class="mt-4 font-titulo text-4xl font-extrabold text-azul-oscuro">{cifra(c.metrica.valor, idioma)}</p>
-              <p class="text-sm text-tinta-suave">{c.metrica.etiqueta[idioma]}</p>
-              <h3 class="mt-5 text-lg font-bold leading-snug">{c.titular[idioma]}</h3>
-              <p class="mt-2 text-sm text-tinta-suave">{c.marca} · {c.rubro[idioma]}</p>
-              <span class="mt-auto pt-6 text-sm font-semibold text-rojo">
-                {t.verCaso} <span aria-hidden="true" class="inline-block transition group-hover:translate-x-1">→</span>
+        <div class="text-center">
+          <span class="text-rojo"><Icono nombre="destello" size={22} class="mx-auto" /></span>
+          <h2 class="mt-3 font-serif text-4xl font-semibold text-azul-oscuro md:text-5xl">{t.resultadosTitulo}</h2>
+          <p class="mx-auto mt-3 max-w-2xl text-lg text-tinta-suave">{t.resultadosBajada}</p>
+        </div>
+
+        <div class="mt-10 grid grid-cols-2 gap-3 lg:grid-cols-4" role="group" aria-label={t.resultadosTitulo}>
+          {enfoques.map((e) => (
+            <button type="button" class="filtro tarjeta p-4 text-left sm:p-5" data-filtro={e} aria-pressed="false">
+              <span class="flex items-center gap-2 font-titulo font-bold text-azul-oscuro">
+                <Icono nombre={e} size={18} class="shrink-0 text-azul" />{t.enfoques[e].titulo}
               </span>
-            </a>
+              <span class="mt-1 block text-sm text-tinta-suave">{t.enfoques[e].texto}</span>
+            </button>
           ))}
         </div>
-        <p class="mt-6 text-xs text-tinta-suave">{t.notaCifras}</p>
+        <button type="button" class="filtro-todos mt-4 hidden min-h-11 text-sm font-semibold text-rojo underline-offset-4 hover:underline" data-filtro="todos">
+          ← {t.todos}
+        </button>
+
+        <div class="mt-8 grid gap-6 md:grid-cols-2">
+          {casos.map((c) => <TarjetaCaso caso={c} idioma={idioma} />)}
+        </div>
       </div>
     </section>
 
@@ -110,12 +143,6 @@ const otro = idioma === 'es' ? 'en' : 'es';
             </li>
           ))}
         </ol>
-        <h3 class="etiqueta mt-12 text-tinta-suave">{t.herramientasTitulo}</h3>
-        <ul class="mt-4 flex flex-wrap gap-2">
-          {herramientas.map((h) => (
-            <li class="rounded-lg bg-white px-3 py-2 text-sm font-medium text-azul-oscuro ring-1 ring-tinta/10">{h}</li>
-          ))}
-        </ul>
       </div>
     </section>
 
@@ -134,7 +161,6 @@ const otro = idioma === 'es' ? 'en' : 'es';
             ))}
           </ul>
         </div>
-        <!-- Matriz 2×2: fuerza de marca vs. eficiencia comercial -->
         <div class="rounded-2xl bg-azul-oscuro p-5 sm:p-6" aria-hidden="true">
           <div class="grid grid-cols-2 gap-2 text-center text-sm font-semibold">
             <div class="rounded-lg bg-white/5 p-5 sm:p-6">{t.prismaCuadrantes[1]}</div>
@@ -152,4 +178,31 @@ const otro = idioma === 'es' ? 'en' : 'es';
 
     <Contacto idioma={idioma} />
   </main>
+
+  <script>
+    // Filtro de casos por desafío.
+    const filtros = document.querySelectorAll<HTMLButtonElement>('[data-filtro]');
+    const tarjetas = document.querySelectorAll<HTMLElement>('[data-caso]');
+    const todos = document.querySelector<HTMLButtonElement>('.filtro-todos');
+    filtros.forEach((boton) =>
+      boton.addEventListener('click', () => {
+        const elegido = boton.dataset.filtro ?? 'todos';
+        const activo = elegido !== 'todos' && boton.getAttribute('aria-pressed') !== 'true';
+        filtros.forEach((b) => b.setAttribute('aria-pressed', String(activo && b === boton)));
+        tarjetas.forEach((c) => {
+          c.hidden = activo && !(c.dataset.enfoques ?? '').split(' ').includes(elegido);
+        });
+        todos?.classList.toggle('hidden', !activo);
+      }),
+    );
+
+    // Terminal: lo que se escriba abre una conversación por WhatsApp.
+    document.querySelectorAll<HTMLFormElement>('[data-terminal]').forEach((form) =>
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const texto = form.querySelector('input')?.value.trim() || 'Hola';
+        window.open(`${form.dataset.terminal}?text=${encodeURIComponent(texto)}`, '_blank', 'noopener');
+      }),
+    );
+  </script>
 </Base>
