@@ -19,10 +19,11 @@ Cifras aproximadas, reconstruidas a partir de los reportes de cada cuenta.
 
 ## Stack
 
-Astro + Tailwind CSS, sitio estático publicado con GitHub Actions en GitHub Pages. Los casos viven en `src/data/casos.ts` (un solo archivo, ambos idiomas).
+Astro + Tailwind CSS, sitio estático publicado en GitHub Pages (rama `gh-pages`). Los casos viven en `src/data/casos.ts` (un solo archivo, ambos idiomas).
 
 ```bash
 npm install
 npm run dev      # http://localhost:4321
 npm run build
+npm run publicar # compila y sube el sitio a GitHub Pages
 ```
