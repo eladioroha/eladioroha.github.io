@@ -47,13 +47,19 @@ const otro = idioma === 'es' ? 'en' : 'es';
     <section class="border-b border-tinta/10 bg-superficie py-12">
       <div class="contenedor">
         <h2 class="etiqueta text-center text-tinta-suave">{t.marcasTitulo}</h2>
-        <div class="mt-8 grid gap-8 md:grid-cols-2">
+        <div class="mt-8 grid gap-8">
           {[['ecommerce', marcas.ecommerce], ['leads', marcas.leads]].map(([clave, lista]) => (
             <div>
               <p class="mb-3 text-sm font-semibold text-azul">{clave === 'ecommerce' ? t.ecommerce : t.leads}</p>
-              <ul class="flex flex-wrap gap-2">
-                {(lista as string[]).map((m) => (
-                  <li class="rounded-full border border-tinta/10 bg-white px-4 py-2 font-titulo text-sm font-bold text-azul-oscuro">{m}</li>
+              <ul class="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4">
+                {(lista as typeof marcas.leads).map((m) => (
+                  <li class="flex h-20 items-center justify-center rounded-xl border border-tinta/10 bg-white px-4" title={m.nombre}>
+                    {m.logo ? (
+                      <img src={ruta(`/logos/${m.logo}`)} alt={m.nombre} loading="lazy" class="logo-marca max-h-11 max-w-[75%] object-contain" />
+                    ) : (
+                      <span class="text-center font-titulo text-sm font-extrabold uppercase leading-tight tracking-wide text-tinta/80">{m.nombre}</span>
+                    )}
+                  </li>
                 ))}
               </ul>
             </div>

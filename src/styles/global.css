@@ -68,6 +68,9 @@
     border-radius: 1rem;
   }
 
+  /* Muro de marcas: todos los logos en una sola tinta para que se vean parejos. */
+  .logo-marca { filter: brightness(0); opacity: 0.8; }
+
   /* Pendientes: texto entre [corchetes] que falta completar. */
   .pendiente { background: #fff3a6; color: #5c4a00; padding-inline: 0.25em; border-radius: 0.25em; }
 }

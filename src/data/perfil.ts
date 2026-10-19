@@ -110,9 +110,26 @@ export const ui = {
   },
 } as const;
 
-export const marcas = {
-  ecommerce: ['Underfive', 'C. del Pilar', 'SkyStore', 'Herramientas Express', 'Construplaza', 'BeCookies', 'Music Hall', 'Lamy'],
-  leads: ['Clínica Dr. Carrasco', 'AndesMaq', 'Club Gordos', 'GRDS', 'Fast no Junk', 'Parque Cousiño Macul'],
+// Logos en public/logos. Las marcas sin logo se muestran con su nombre.
+export const marcas: Record<'ecommerce' | 'leads', { nombre: string; logo?: string }[]> = {
+  ecommerce: [
+    { nombre: 'Underfive', logo: 'underfive.png' },
+    { nombre: 'C. del Pilar', logo: 'c-del-pilar.png' },
+    { nombre: 'SkyStore' },
+    { nombre: 'Herramientas Express' },
+    { nombre: 'Construplaza', logo: 'construplaza.svg' },
+    { nombre: 'BeCookies', logo: 'becookies.png' },
+    { nombre: 'Music Hall' },
+    { nombre: 'Lamy', logo: 'lamy.png' },
+  ],
+  leads: [
+    { nombre: 'Clínica Dr. Carrasco', logo: 'clinica-dr-carrasco.png' },
+    { nombre: 'AndesMaq' },
+    { nombre: 'Club Gordos', logo: 'club-gordos.svg' },
+    { nombre: 'GRDS', logo: 'grds.png' },
+    { nombre: 'Fast no Junk' },
+    { nombre: 'Parque Cousiño Macul', logo: 'parque-cousino-macul.svg' },
+  ],
 };
 
 export const herramientas = ['Meta Ads', 'Google Ads', 'Meta CAPI', 'Klaviyo', 'Zapier', 'Claude AI'];
