@@ -116,7 +116,7 @@ export const marcas: Record<'ecommerce' | 'leads', { nombre: string; logo?: stri
     { nombre: 'Underfive', logo: 'underfive.png' },
     { nombre: 'C. del Pilar', logo: 'c-del-pilar.png' },
     { nombre: 'SkyStore' },
-    { nombre: 'Herramientas Express' },
+    { nombre: 'Herramientas Express', logo: 'herramientas-express.png' },
     { nombre: 'Construplaza', logo: 'construplaza.svg' },
     { nombre: 'BeCookies', logo: 'becookies.png' },
     { nombre: 'Music Hall' },
