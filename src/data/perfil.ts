@@ -39,7 +39,6 @@ export const ui = {
     casosTitulo: 'Casos destacados',
     casosBajada: 'Cada caso cuenta el problema, lo que hice y lo que pasó con el negocio.',
     verCaso: 'Ver caso',
-    enCurso: 'En curso',
     procesoTitulo: 'Cómo trabajo',
     proceso: [
       { titulo: 'Diagnóstico', texto: 'Reviso cuentas, tracking y el negocio antes de tocar una campaña. Qué vende, a quién y con qué margen.' },
@@ -86,7 +85,6 @@ export const ui = {
     casosTitulo: 'Featured case studies',
     casosBajada: 'Each case covers the problem, what I did and what happened to the business.',
     verCaso: 'Read case',
-    enCurso: 'Ongoing',
     procesoTitulo: 'How I work',
     proceso: [
       { titulo: 'Diagnosis', texto: 'I review accounts, tracking and the business before touching a campaign: what it sells, to whom and at what margin.' },

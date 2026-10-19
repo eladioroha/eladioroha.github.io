@@ -20,7 +20,6 @@ export interface Caso {
   slug: string;
   marca: string;
   tipo: 'ecommerce' | 'leads';
-  enCurso?: boolean;
   rubro: Texto;
   periodo: Texto;
   plataformas: string;
@@ -302,9 +301,8 @@ export const casos: Caso[] = [
     slug: 'underfive',
     marca: 'Underfive',
     tipo: 'ecommerce',
-    enCurso: true,
     rubro: { es: 'Snacks saludables', en: 'Healthy snacks' },
-    periodo: { es: 'Sept. 2025 – hoy', en: 'Sept. 2025 – present' },
+    periodo: { es: 'Sept. 2025 – 2026', en: 'Sept. 2025 – 2026' },
     plataformas: 'Meta Ads · Klaviyo',
     inversion: { es: '[inversión mensual]', en: '[monthly spend]' },
     titular: {
@@ -358,9 +356,8 @@ export const casos: Caso[] = [
     slug: 'c-del-pilar',
     marca: 'C. del Pilar',
     tipo: 'ecommerce',
-    enCurso: true,
     rubro: { es: 'Moda', en: 'Fashion' },
-    periodo: { es: 'Jul. 2026 – hoy', en: 'Jul. 2026 – present' },
+    periodo: { es: '2026', en: '2026' },
     plataformas: 'Meta Ads',
     inversion: { es: '~$400 mil', en: '~CLP 400K' },
     titular: {

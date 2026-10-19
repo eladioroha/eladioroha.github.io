@@ -76,7 +76,6 @@ const otro = idioma === 'es' ? 'en' : 'es';
             >
               <div class="flex items-center justify-between gap-2">
                 <span class="etiqueta text-azul">{c.tipo === 'ecommerce' ? t.ecommerce : t.leads}</span>
-                {c.enCurso && <span class="rounded-full bg-superficie px-2.5 py-1 text-xs font-semibold text-tinta-suave">{t.enCurso}</span>}
               </div>
               <p class="mt-4 font-titulo text-4xl font-extrabold text-azul-oscuro">{cifra(c.metrica.valor, idioma)}</p>
               <p class="text-sm text-tinta-suave">{c.metrica.etiqueta[idioma]}</p>

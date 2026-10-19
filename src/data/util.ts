@@ -1,7 +1,14 @@
 // Escapa el texto y resalta los pendientes [entre corchetes] para que se vean al revisar.
+// En el sitio publicado (build) los pendientes no se muestran: se quitan del texto.
 export function marcar(texto: string): string {
   const seguro = texto.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  if (!import.meta.env.DEV) return seguro.replace(/\[[^\]]+\]\.?\s*/g, '').trim();
   return seguro.replace(/\[([^\]]+)\]/g, '<mark class="pendiente">[$1]</mark>');
+}
+
+// Un texto que es solo un pendiente: en el sitio publicado se oculta completo.
+export function visible(texto: string): boolean {
+  return import.meta.env.DEV || !/^\s*\[[^\]]*\]\s*$/.test(texto);
 }
 
 // Ruta con el base de Astro (útil si el sitio termina en un subdirectorio de GitHub Pages).
