@@ -1,0 +1,29 @@
+---
+// Barras horizontales de una sola serie (antes/después o comparación).
+// Cada barra lleva su valor escrito al lado, así que no depende del color.
+import type { Grafico } from '../data/casos';
+import type { Idioma } from '../data/perfil';
+import { cifra } from '../data/util';
+
+interface Props { grafico: Grafico; idioma: Idioma }
+const { grafico, idioma } = Astro.props;
+const maximo = Math.max(...grafico.barras.map((b) => b.valor), 1);
+---
+<figure class="tarjeta p-5 sm:p-6">
+  <figcaption class="mb-5 font-titulo text-base font-bold text-azul-oscuro">{grafico.titulo[idioma]}</figcaption>
+  <dl class="space-y-4">
+    {grafico.barras.map((b) => (
+      <div class="grid grid-cols-[minmax(6.5rem,9rem)_1fr] items-center gap-3" title={`${b.etiqueta[idioma]}: ${cifra(b.texto, idioma)}`}>
+        <dt class="text-sm text-tinta-suave">{b.etiqueta[idioma]}</dt>
+        <dd class="flex items-center gap-2">
+          <span
+            class:list={['h-7 rounded-r-[4px]', b.destacada ? 'bg-azul' : 'bg-azul-tenue']}
+            style={`width: max(4px, ${(b.valor / maximo) * 78}%)`}
+          ></span>
+          <span class="whitespace-nowrap text-sm font-semibold text-tinta">{cifra(b.texto, idioma)}</span>
+        </dd>
+      </div>
+    ))}
+  </dl>
+  {grafico.nota && <p class="mt-4 text-xs text-tinta-suave">{grafico.nota[idioma]}</p>}
+</figure>

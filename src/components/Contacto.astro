@@ -1,0 +1,39 @@
+---
+import { perfil, ui, type Idioma } from '../data/perfil';
+
+interface Props { idioma: Idioma }
+const { idioma } = Astro.props;
+const t = ui[idioma];
+const whatsapp = `https://wa.me/${perfil.whatsapp}?text=${encodeURIComponent(t.mensajeWhatsapp)}`;
+const canales = [
+  { nombre: 'Email', valor: perfil.email, href: `mailto:${perfil.email}` },
+  { nombre: 'WhatsApp', valor: perfil.whatsappVisible, href: whatsapp },
+  { nombre: 'LinkedIn', valor: '/in/eladiorojash', href: perfil.linkedin },
+];
+---
+<section id="contacto" class="seccion bg-azul-oscuro text-white">
+  <div class="contenedor">
+    <h2 class="text-3xl font-extrabold md:text-5xl">{t.contactoTitulo}</h2>
+    <p class="mt-4 max-w-xl text-lg text-white/80">{t.contactoBajada}</p>
+    <a href={whatsapp} class="btn-cta mt-8" target="_blank" rel="noopener">WhatsApp</a>
+    <ul class="mt-10 grid gap-3 sm:grid-cols-3">
+      {canales.map((c) => (
+        <li>
+          <a
+            href={c.href}
+            target={c.href.startsWith('http') ? '_blank' : undefined}
+            rel="noopener"
+            class="flex min-h-12 flex-col rounded-xl bg-white/5 p-4 ring-1 ring-white/15 transition hover:bg-white/10"
+          >
+            <span class="etiqueta text-white/60">{c.nombre}</span>
+            <span class="mt-1 break-all font-semibold">{c.valor}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+  <footer class="contenedor mt-16 flex flex-col gap-2 border-t border-white/10 pt-6 text-sm text-white/50 sm:flex-row sm:justify-between">
+    <span>© {new Date().getFullYear()} {perfil.nombre}</span>
+    <span>{perfil.cargo}</span>
+  </footer>
+</section>

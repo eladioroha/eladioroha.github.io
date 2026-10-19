@@ -1,0 +1,150 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from './Header.astro';
+import Contacto from './Contacto.astro';
+import { ui, marcas, herramientas, type Idioma } from '../data/perfil';
+import { casos } from '../data/casos';
+import { cifra, ruta } from '../data/util';
+
+interface Props { idioma: Idioma }
+const { idioma } = Astro.props;
+const t = ui[idioma];
+const otro = idioma === 'es' ? 'en' : 'es';
+---
+<Base idioma={idioma} titulo={t.metaTitulo} descripcion={t.metaDescripcion} alternativa={`/${otro}/`}>
+  <Header idioma={idioma} alternativa={`/${otro}/`} />
+
+  <main>
+    <!-- Hero -->
+    <section class="relative overflow-hidden bg-azul-oscuro text-white">
+      <div class="pointer-events-none absolute -right-32 -top-32 size-96 rounded-full bg-azul opacity-40 blur-3xl"></div>
+      <div class="contenedor relative pb-16 pt-14 md:pb-24 md:pt-24">
+        <p class="etiqueta text-white/70">{t.heroEtiqueta}</p>
+        <h1 class="mt-4 max-w-3xl text-4xl font-extrabold leading-[1.08] md:text-6xl">
+          {t.heroTitulo}
+        </h1>
+        <p class="mt-6 max-w-2xl text-lg text-white/80">{t.heroBajada}</p>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a href="#casos" class="btn-cta">{t.verCasos}</a>
+          <a href="#contacto" class="btn-secundario text-white">{t.contactar}</a>
+        </div>
+
+        <dl class="mt-14 grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-white/15 md:grid-cols-4">
+          {t.cifras.map((c) => (
+            <div class="bg-azul-oscuro p-5">
+              <dt class="sr-only">{c.etiqueta}</dt>
+              <dd>
+                <span class="block whitespace-nowrap font-titulo text-2xl font-extrabold sm:text-3xl md:text-4xl">{c.valor}</span>
+                <span class="mt-2 block text-sm text-white/70">{c.etiqueta}</span>
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+
+    <!-- Marcas -->
+    <section class="border-b border-tinta/10 bg-superficie py-12">
+      <div class="contenedor">
+        <h2 class="etiqueta text-center text-tinta-suave">{t.marcasTitulo}</h2>
+        <div class="mt-8 grid gap-8 md:grid-cols-2">
+          {[['ecommerce', marcas.ecommerce], ['leads', marcas.leads]].map(([clave, lista]) => (
+            <div>
+              <p class="mb-3 text-sm font-semibold text-azul">{clave === 'ecommerce' ? t.ecommerce : t.leads}</p>
+              <ul class="flex flex-wrap gap-2">
+                {(lista as string[]).map((m) => (
+                  <li class="rounded-full border border-tinta/10 bg-white px-4 py-2 font-titulo text-sm font-bold text-azul-oscuro">{m}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Casos -->
+    <section id="casos" class="seccion">
+      <div class="contenedor">
+        <h2 class="titulo-seccion">{t.casosTitulo}</h2>
+        <p class="mt-3 max-w-2xl text-lg text-tinta-suave">{t.casosBajada}</p>
+        <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {casos.map((c) => (
+            <a
+              href={ruta(`/${idioma}/casos/${c.slug}/`)}
+              class="tarjeta group flex flex-col p-6 transition hover:-translate-y-0.5 hover:border-azul/40 hover:shadow-lg"
+              data-revelar
+            >
+              <div class="flex items-center justify-between gap-2">
+                <span class="etiqueta text-azul">{c.tipo === 'ecommerce' ? t.ecommerce : t.leads}</span>
+                {c.enCurso && <span class="rounded-full bg-superficie px-2.5 py-1 text-xs font-semibold text-tinta-suave">{t.enCurso}</span>}
+              </div>
+              <p class="mt-4 font-titulo text-4xl font-extrabold text-azul-oscuro">{cifra(c.metrica.valor, idioma)}</p>
+              <p class="text-sm text-tinta-suave">{c.metrica.etiqueta[idioma]}</p>
+              <h3 class="mt-5 text-lg font-bold leading-snug">{c.titular[idioma]}</h3>
+              <p class="mt-2 text-sm text-tinta-suave">{c.marca} · {c.rubro[idioma]}</p>
+              <span class="mt-auto pt-6 text-sm font-semibold text-rojo">
+                {t.verCaso} <span aria-hidden="true" class="inline-block transition group-hover:translate-x-1">→</span>
+              </span>
+            </a>
+          ))}
+        </div>
+        <p class="mt-6 text-xs text-tinta-suave">{t.notaCifras}</p>
+      </div>
+    </section>
+
+    <!-- Proceso -->
+    <section id="proceso" class="seccion bg-superficie">
+      <div class="contenedor">
+        <h2 class="titulo-seccion">{t.procesoTitulo}</h2>
+        <ol class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {t.proceso.map((p, i) => (
+            <li class="tarjeta p-6" data-revelar>
+              <span class="font-titulo text-sm font-extrabold text-rojo">0{i + 1}</span>
+              <h3 class="mt-2 text-lg font-bold text-azul-oscuro">{p.titulo}</h3>
+              <p class="mt-2 text-sm text-tinta-suave">{p.texto}</p>
+            </li>
+          ))}
+        </ol>
+        <h3 class="etiqueta mt-12 text-tinta-suave">{t.herramientasTitulo}</h3>
+        <ul class="mt-4 flex flex-wrap gap-2">
+          {herramientas.map((h) => (
+            <li class="rounded-lg bg-white px-3 py-2 text-sm font-medium text-azul-oscuro ring-1 ring-tinta/10">{h}</li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- Método PRISMA -->
+    <section id="prisma" class="seccion bg-azul text-white">
+      <div class="contenedor grid items-center gap-10 lg:grid-cols-2">
+        <div>
+          <p class="etiqueta text-white/70">{t.prismaEtiqueta}</p>
+          <h2 class="mt-3 text-3xl font-extrabold md:text-4xl">{t.prismaTitulo}</h2>
+          <p class="mt-5 text-lg text-white/85">{t.prismaTexto}</p>
+          <ul class="mt-6 flex flex-wrap gap-2">
+            {t.prismaPilares.map((p) => (
+              <li class="rounded-full bg-white/10 px-3 py-1.5 text-sm font-medium ring-1 ring-white/20">
+                <span class="font-bold text-white">{p[0]}</span>{p.slice(1)}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <!-- Matriz 2×2: fuerza de marca vs. eficiencia comercial -->
+        <div class="rounded-2xl bg-azul-oscuro p-5 sm:p-6" aria-hidden="true">
+          <div class="grid grid-cols-2 gap-2 text-center text-sm font-semibold">
+            <div class="rounded-lg bg-white/5 p-5 sm:p-6">{t.prismaCuadrantes[1]}</div>
+            <div class="rounded-lg bg-rojo p-5 sm:p-6">{t.prismaCuadrantes[0]}</div>
+            <div class="rounded-lg bg-white/5 p-5 sm:p-6">{t.prismaCuadrantes[3]}</div>
+            <div class="rounded-lg bg-white/5 p-5 sm:p-6">{t.prismaCuadrantes[2]}</div>
+          </div>
+          <div class="mt-3 flex justify-between text-xs text-white/60">
+            <span>{idioma === 'es' ? '↑ Fuerza de marca' : '↑ Brand strength'}</span>
+            <span>{idioma === 'es' ? 'Eficiencia comercial →' : 'Commercial efficiency →'}</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <Contacto idioma={idioma} />
+  </main>
+</Base>

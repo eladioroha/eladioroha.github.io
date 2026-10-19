@@ -1,0 +1,27 @@
+---
+import { perfil, ui, type Idioma } from '../data/perfil';
+import { ruta } from '../data/util';
+
+interface Props { idioma: Idioma; alternativa: string }
+const { idioma, alternativa } = Astro.props;
+const t = ui[idioma];
+const inicio = ruta(`/${idioma}/`);
+---
+<header class="sticky top-0 z-30 border-b border-white/10 bg-azul-oscuro/95 text-white backdrop-blur">
+  <div class="contenedor flex h-16 items-center justify-between gap-4">
+    <a href={inicio} class="font-titulo text-lg font-extrabold tracking-tight">
+      {perfil.nombre.split(' ').slice(0, 2).join(' ')}<span class="text-rojo">.</span>
+    </a>
+    <nav class="hidden items-center gap-6 text-sm font-medium text-white/80 md:flex">
+      <a href={`${inicio}#casos`} class="hover:text-white">{t.nav.casos}</a>
+      <a href={`${inicio}#proceso`} class="hover:text-white">{t.nav.proceso}</a>
+      <a href={`${inicio}#prisma`} class="hover:text-white">{t.nav.prisma}</a>
+      <a href={`${inicio}#contacto`} class="hover:text-white">{t.nav.contacto}</a>
+    </nav>
+    <a
+      href={ruta(alternativa)}
+      hreflang={idioma === 'es' ? 'en' : 'es'}
+      class="inline-flex min-h-11 items-center rounded-lg border border-white/30 px-3 text-sm font-semibold hover:bg-white/10"
+    >{t.otroIdioma}</a>
+  </div>
+</header>
