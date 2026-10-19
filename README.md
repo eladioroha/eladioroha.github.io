@@ -2,7 +2,7 @@
 
 Portafolio bilingüe (español / English) con casos reales de Meta Ads, Google Ads y email marketing en ecommerce y generación de leads.
 
-**Sitio:** https://eladiorojash.github.io
+**Sitio:** https://eladioroha.github.io
 
 ## Casos
 

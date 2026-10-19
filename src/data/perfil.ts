@@ -11,8 +11,8 @@ export const perfil = {
   whatsapp: '56968962976',
   whatsappVisible: '+56 9 6896 2976',
   linkedin: 'https://www.linkedin.com/in/eladiorojash',
-  github: 'https://github.com/eladiorojash',
-  url: 'https://eladiorojash.github.io',
+  github: 'https://github.com/eladioroha',
+  url: 'https://eladioroha.github.io',
 };
 
 export const ui = {
